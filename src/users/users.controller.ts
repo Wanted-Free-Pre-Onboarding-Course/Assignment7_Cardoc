@@ -18,8 +18,8 @@ export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
   @Post()
-  async signup(@Body() body: SignupRequestDto) {
-    console.log(body);
+  async signup(@Body() signupRequestDto: SignupRequestDto) {
+    console.log(signupRequestDto);
     return 'signup';
     // return this.userService.getHello();
   }

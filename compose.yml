@@ -2,14 +2,11 @@ version: '3'
 
 services:
   db:
-    # build: ./database
-    image: mysql:5.7
-    container_name: ${MYSQL_HOST}
-    volumes:
-      - ./database/data:/var/lib/mysql
+    image: postgres:9.6.23
+    restart: always
+    env_file:
+      - ./.env
     ports:
-      - "${MYSQL_PORT}:${MYSQL_PORT}"
-    environment:
-      MYSQL_TCP_PORT: ${MYSQL_PORT}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DB_NAME}
+      - 5433:5432
+    volumes:
+      - ./db_data:/var/lib/postgresql/data

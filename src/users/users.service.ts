@@ -24,6 +24,7 @@ export class UsersService {
     );
 
     const user = await this.userRepository.createUser(hashedSignupRequestDto);
-    return await this.userRepository.savedUser(user);
+    const savedUser = await this.userRepository.savedUser(user);
+    return { userId: savedUser['id'] };
   }
 }

@@ -15,8 +15,7 @@ export class userRepository extends Repository<UserEntity> {
 
   async savedUser(user: object): Promise<object> {
     try {
-      const savedUser = await this.save(user);
-      return { userId: savedUser.id };
+      return await this.save(user);
     } catch (error) {
       if (error.code === '23505') {
         throw new ConflictException('같은 이메일로 가입되어 있습니다.');

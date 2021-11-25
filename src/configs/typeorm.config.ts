@@ -14,9 +14,9 @@ export const typeOrmModuleOptions = {
     password: configService.get('DB_PASSWORD'),
     database: configService.get('DB_NAME'),
     entities: [__dirname + '/../**/*.entity.{js,ts}'],
-    synchronize: true, //! set 'false' in production
+    synchronize: configService.get('NODE_ENV') === 'development' ? true : false, //! set 'false' in production
     autoLoadEntities: true,
-    logging: true,
+    logging: configService.get('NODE_ENV') === 'development' ? true : false, //! set 'false' in production
     keepConnectionAlive: true,
   }),
   inject: [ConfigService],

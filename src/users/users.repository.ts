@@ -24,4 +24,12 @@ export class userRepository extends Repository<UserEntity> {
       }
     }
   }
+
+  async findUser(email: string): Promise<object> {
+    try {
+      return await this.findOne({ email });
+    } catch (error) {
+      throw new InternalServerErrorException();
+    }
+  }
 }

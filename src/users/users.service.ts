@@ -1,3 +1,4 @@
+import { UserEntity } from 'src/users/users.entity';
 import { SigninRequestDto } from './dto/signin.request.dto';
 import { userRepository } from './users.repository';
 import { SignupRequestDto } from './dto/signup.request.dto';

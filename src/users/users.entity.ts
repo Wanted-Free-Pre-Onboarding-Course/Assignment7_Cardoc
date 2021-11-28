@@ -1,7 +1,9 @@
+import { TrimEntity } from 'src/trims/trims.entity';
 import {
   BaseEntity,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
 } from 'typeorm';
@@ -20,4 +22,7 @@ export class UserEntity extends BaseEntity {
 
   @Column()
   name: string;
+
+  @OneToMany(() => TrimEntity, (trim) => trim.user)
+  trim: TrimEntity[];
 }

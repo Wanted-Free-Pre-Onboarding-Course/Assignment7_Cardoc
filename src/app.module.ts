@@ -4,6 +4,8 @@ import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmModuleOptions } from './configs/typeorm.config';
+import { TrimsModule } from './trims/trims.module';
+import { TiresModule } from './tires/tires.module';
 import * as Joi from 'joi';
 
 @Module({
@@ -27,6 +29,8 @@ import * as Joi from 'joi';
     }),
     TypeOrmModule.forRootAsync(typeOrmModuleOptions),
     UsersModule,
+    TrimsModule,
+    TiresModule,
   ],
 })
 export class AppModule implements NestModule {

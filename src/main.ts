@@ -42,6 +42,7 @@ class Application {
     );
   }
   private setUpOpenAPIMiddleware() {
+    this.server.enableCors();
     SwaggerModule.setup(
       'docs',
       this.server,

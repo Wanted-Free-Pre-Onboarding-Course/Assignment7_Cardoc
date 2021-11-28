@@ -1,5 +1,7 @@
-import { EntityRepository, Repository } from 'typeorm';
+import { GetTireDto } from './../tires/dto/getTire.dto';
+import { Connection, EntityRepository, Repository } from 'typeorm';
 import { TrimEntity } from './trims.entity';
+import { TireEntity } from 'src/tires/tires.entity';
 
 import {
   ConflictException,
@@ -31,6 +33,16 @@ export class trimRepository extends Repository<TrimEntity> {
   async findTrim(trim: object): Promise<object> {
     try {
       return await this.findOne(trim);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async findTrimById(getTireDto: GetTireDto): Promise<object> {
+    try {
+      return await this.createQueryBuilder('trim')
+        .where('trim.userId=:userId', getTireDto)
+        .getMany();
     } catch (err) {
       throw err;
     }

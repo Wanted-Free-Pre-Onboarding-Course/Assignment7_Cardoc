@@ -7,13 +7,14 @@ import { SigninRequestDto } from './dto/signin.request.dto';
 import { SignupRequestDto } from './dto/signup.request.dto';
 import { SuccessInterceptor } from './../common/interceptors/success.interceptor';
 import { UsersService } from './users.service';
-import { Controller, Post, UseInterceptors, Body } from '@nestjs/common';
+import { Controller, Post, UseInterceptors, Body, Res } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import {
   UserSignupBadRequestDto,
   UserSignupConflictDto,
 } from './dto/swagger/fail/signup.fail.dto';
 import { UserSigninDto } from './dto/swagger/success/signin.success.dto';
+import { Response } from 'express';
 
 @Controller('users')
 @UseInterceptors(SuccessInterceptor)
@@ -62,7 +63,10 @@ export class UsersController {
   @Post('/signin')
   async signin(
     @Body() signinRequestDto: SigninRequestDto,
+    @Res({ passthrough: true }) response: Response,
   ): Promise<{ accessToken: string }> {
+    const { accessToken } = await this.userService.signin(signinRequestDto);
+    response.cookie('accessToken', accessToken, { httpOnly: true });
     return await this.userService.signin(signinRequestDto);
   }
 }

@@ -3,7 +3,7 @@ env_files/*
 db_data
 
 # compiled output
-/dist
+# /dist
 /node_modules
 
 # Logs

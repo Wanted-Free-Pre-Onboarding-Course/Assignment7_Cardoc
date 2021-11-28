@@ -5,25 +5,42 @@ import { ValidationPipe, Logger } from '@nestjs/common';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
+import * as expressBasicAuth from 'express-basic-auth';
 
 class Application {
   private logger = new Logger(Application.name);
   private PORT: string;
   private DEV_MODE: boolean;
+  private ADMIN_USER: string;
+  private ADMIN_PASSWORD: string;
 
   constructor(private server: NestExpressApplication) {
     this.server = server;
     this.PORT = process.env.PORT;
     this.DEV_MODE = process.env.NODE_ENV === 'production' ? false : true;
+    this.ADMIN_USER = process.env.ADMIN_USER;
+    this.ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
   }
 
   private async setUpGlobalMiddleware() {
     this.server.use(cookieParser());
+    this.setUpBasicAuth();
     this.setUpOpenAPIMiddleware();
     this.server.useGlobalPipes(new ValidationPipe());
     this.server.useGlobalFilters(new HttpExceptionFilter());
   }
 
+  private setUpBasicAuth() {
+    this.server.use(
+      ['/docs', '/docs-json'],
+      expressBasicAuth({
+        challenge: true,
+        users: {
+          [this.ADMIN_USER]: this.ADMIN_PASSWORD,
+        },
+      }),
+    );
+  }
   private setUpOpenAPIMiddleware() {
     SwaggerModule.setup(
       'docs',

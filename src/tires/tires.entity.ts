@@ -10,6 +10,8 @@ import {
   Unique,
 } from 'typeorm';
 
+import { TrimEntity } from 'src/trims/trims.entity';
+
 @Entity()
 export class TireEntity extends BaseEntity {
   @PrimaryGeneratedColumn({ name: 'id' })

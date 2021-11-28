@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe, Logger } from '@nestjs/common';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
 
 class Application {
@@ -18,8 +19,24 @@ class Application {
 
   private async setUpGlobalMiddleware() {
     this.server.use(cookieParser());
+    this.setUpOpenAPIMiddleware();
     this.server.useGlobalPipes(new ValidationPipe());
     this.server.useGlobalFilters(new HttpExceptionFilter());
+  }
+
+  private setUpOpenAPIMiddleware() {
+    SwaggerModule.setup(
+      'docs',
+      this.server,
+      SwaggerModule.createDocument(
+        this.server,
+        new DocumentBuilder()
+          .setTitle('카닥 - API')
+          .setDescription('원티드 프리 온보딩 7차 과제')
+          .setVersion('0.0.1')
+          .build(),
+      ),
+    );
   }
 
   async bootstrap() {

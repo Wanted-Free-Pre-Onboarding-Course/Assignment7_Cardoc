@@ -13,13 +13,12 @@ import {
 } from 'typeorm';
 
 @Entity()
-@Unique(['id'])
 export class TrimEntity extends BaseEntity {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
   @Column({ name: 'trimId' })
-  trimId: string;
+  trimId: number;
 
   @Column({ name: 'trimName' })
   trimName: string;

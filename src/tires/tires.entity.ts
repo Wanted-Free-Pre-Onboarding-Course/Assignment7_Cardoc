@@ -1,5 +1,3 @@
-import { TrimEntity } from 'src/trims/trims.entity';
-
 import {
   BaseEntity,
   Column,
@@ -13,33 +11,49 @@ import {
 } from 'typeorm';
 
 @Entity()
-@Unique(['id'])
 export class TireEntity extends BaseEntity {
   @PrimaryGeneratedColumn({ name: 'id' })
   id: number;
 
-  @Column({ name: 'tireName' })
-  tireName: string;
+  @Column({ name: 'frontTireName' })
+  frontTireName: string;
 
-  @Column({ name: 'tireWidth' })
-  tireWidth: number;
+  @Column({ name: 'frontTireWidth' })
+  frontTireWidth: number;
 
-  @Column({ name: 'tireAspectRatio' })
-  tireAspectRatio: number;
+  @Column({ name: 'frontTireAspectRatio' })
+  frontTireAspectRatio: number;
 
-  @Column({ name: 'tireDiameter' })
-  tireDiameter: number;
+  @Column({ name: 'frontTireDiameter' })
+  frontTireDiameter: number;
 
-  @Column({ name: 'tireUnit' })
-  tireUnit: string;
+  @Column({ name: 'frontTireUnit' })
+  frontTireUnit: string;
 
-  @Column({ name: 'tireMultiValues' })
-  tireMultiValues: string;
+  @Column({ name: 'frontTireMultiValues' })
+  frontTireMultiValues: string;
+
+  @Column({ name: 'rearTireName' })
+  rearTireName: string;
+
+  @Column({ name: 'rearTireWidth' })
+  rearTireWidth: number;
+
+  @Column({ name: 'rearTireAspectRatio' })
+  rearTireAspectRatio: number;
+
+  @Column({ name: 'rearTireDiameter' })
+  rearTireDiameter: number;
+
+  @Column({ name: 'rearTireUnit' })
+  rearTireUnit: string;
+
+  @Column({ name: 'rearTireMultiValues' })
+  rearTireMultiValues: string;
+
+  @Column({ name: 'trimId' })
+  trimId: number;
 
   @CreateDateColumn({ name: 'createdAt' })
   createdAt: Date;
-
-  @OneToOne(() => TrimEntity)
-  @JoinColumn({ name: 'trimId' })
-  trim: TrimEntity;
 }

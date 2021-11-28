@@ -20,7 +20,6 @@ export class trimRepository extends Repository<TrimEntity> {
     try {
       return await this.save(trim);
     } catch (error) {
-      console.log(error);
       if (error.code === '23505') {
         throw new ConflictException('같은 trim 정보가 저장되어 있습니다.');
       } else {

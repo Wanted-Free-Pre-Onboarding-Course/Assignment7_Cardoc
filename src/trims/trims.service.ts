@@ -1,3 +1,4 @@
+import { tireRepository } from './../tires/tires.repository';
 import { trimRepository } from './trims.repository';
 import { userRepository } from './../users/users.repository';
 import { splitTrim } from './../common/libs/splitTrim.libs';
@@ -14,13 +15,11 @@ export class TrimsService {
     @InjectRepository(userRepository)
     private userRepository: userRepository,
     private trimRepository: trimRepository,
+    private tireRepository: tireRepository,
   ) {}
 
   async createTrim(trimRequestDto: TrimRequestDto[]) {
     isInvalidArray(trimRequestDto);
-
-    const trims = [];
-    const tires = [];
 
     for (const trim of trimRequestDto) {
       const userEmail = trim.email;
@@ -48,11 +47,10 @@ export class TrimsService {
       const findTrim = await this.trimRepository.findTrim(_trim);
       if (!findTrim) await this.trimRepository.savedTrim(_trim);
 
-      trims.push(trimInfo);
-      tires.push(frontTire);
-      tires.push(rearTire);
+      const _tire = await this.tireRepository.createTire(frontTire, rearTire);
+      const findTire = await this.tireRepository.findTire(_tire);
+      if (!findTire) await this.tireRepository.savedTire(_tire);
     }
-
-    return { trims, tires };
+    return;
   }
 }

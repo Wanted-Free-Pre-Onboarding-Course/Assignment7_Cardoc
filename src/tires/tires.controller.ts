@@ -8,6 +8,7 @@ import {
   UseInterceptors,
   Get,
   ParseIntPipe,
+  HttpCode,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GetTireDto } from './dto/getTire.dto';
@@ -25,6 +26,7 @@ export class TiresController {
   })
   @ApiOperation({ summary: '타이어 정보 조회' })
   @Get('/:userId')
+  @HttpCode(200)
   @UseGuards(AuthGuard())
   getTire(@Param('userId', ParseIntPipe) userId: number) {
     return this.trieService.getTire(new GetTireDto(userId));

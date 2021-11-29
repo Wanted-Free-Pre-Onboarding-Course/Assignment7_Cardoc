@@ -32,17 +32,18 @@ let TrimsController = class TrimsController {
 __decorate([
     (0, swagger_1.ApiBody)({ type: [createTrim_request_dto_1.TrimRequestDto] }),
     (0, swagger_1.ApiResponse)({
-        status: 201,
+        status: 200,
         description: '타이어 정보 저장 성공',
         type: createTrim_success_dto_1.TrimCreateTrimDto,
     }),
     (0, swagger_1.ApiResponse)({
         status: 400,
-        description: '입력 데이터 개수가 5개를 초과됐거나 입력이 없는 경우',
+        description: '입력 데이터 개수가 5개를 초과됐거나 입력이 없는 경우, 타이어의 형식이 맞지 않는 경우, 타이어 규격 정보가 존재하지 않는 경우',
         type: createTrim_fail_dto_1.TrimCreateTrimBadRequestDto,
     }),
     (0, swagger_1.ApiOperation)({ summary: '타이어 정보 저장' }),
     (0, common_1.Post)(),
+    (0, common_1.HttpCode)(200),
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)()),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),

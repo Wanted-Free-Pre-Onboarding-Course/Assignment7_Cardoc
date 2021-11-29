@@ -7,7 +7,14 @@ import { SigninRequestDto } from './dto/signin.request.dto';
 import { SignupRequestDto } from './dto/signup.request.dto';
 import { SuccessInterceptor } from './../common/interceptors/success.interceptor';
 import { UsersService } from './users.service';
-import { Controller, Post, UseInterceptors, Body, Res } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  UseInterceptors,
+  Body,
+  Res,
+  HttpCode,
+} from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import {
   UserSignupBadRequestDto,
@@ -22,7 +29,7 @@ export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
   @ApiResponse({
-    status: 201,
+    status: 200,
     description: '회원가입 성공',
     type: UserSignupDto,
   })
@@ -38,6 +45,7 @@ export class UsersController {
   })
   @ApiOperation({ summary: '회원가입' })
   @Post('/signup')
+  @HttpCode(200)
   async signup(
     @Body() signupRequestDto: SignupRequestDto,
   ): Promise<{ userId: number }> {
@@ -45,7 +53,7 @@ export class UsersController {
   }
 
   @ApiResponse({
-    status: 201,
+    status: 200,
     description: '로그인 성공',
     type: UserSigninDto,
   })
@@ -61,6 +69,7 @@ export class UsersController {
   })
   @ApiOperation({ summary: '로그인' })
   @Post('/signin')
+  @HttpCode(200)
   async signin(
     @Body() signinRequestDto: SigninRequestDto,
     @Res({ passthrough: true }) response: Response,

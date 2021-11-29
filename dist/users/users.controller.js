@@ -38,7 +38,7 @@ let UsersController = class UsersController {
 };
 __decorate([
     (0, swagger_1.ApiResponse)({
-        status: 201,
+        status: 200,
         description: '회원가입 성공',
         type: signup_success_dto_1.UserSignupDto,
     }),
@@ -54,6 +54,7 @@ __decorate([
     }),
     (0, swagger_1.ApiOperation)({ summary: '회원가입' }),
     (0, common_1.Post)('/signup'),
+    (0, common_1.HttpCode)(200),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [signup_request_dto_1.SignupRequestDto]),
@@ -61,7 +62,7 @@ __decorate([
 ], UsersController.prototype, "signup", null);
 __decorate([
     (0, swagger_1.ApiResponse)({
-        status: 201,
+        status: 200,
         description: '로그인 성공',
         type: signin_success_dto_1.UserSigninDto,
     }),
@@ -77,6 +78,7 @@ __decorate([
     }),
     (0, swagger_1.ApiOperation)({ summary: '로그인' }),
     (0, common_1.Post)('/signin'),
+    (0, common_1.HttpCode)(200),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Res)({ passthrough: true })),
     __metadata("design:type", Function),

@@ -36,6 +36,7 @@ __decorate([
     }),
     (0, swagger_1.ApiOperation)({ summary: '타이어 정보 조회' }),
     (0, common_1.Get)('/:userId'),
+    (0, common_1.HttpCode)(200),
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)()),
     __param(0, (0, common_1.Param)('userId', common_1.ParseIntPipe)),
     __metadata("design:type", Function),

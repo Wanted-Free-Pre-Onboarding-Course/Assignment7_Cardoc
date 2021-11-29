@@ -2,7 +2,7 @@
 
   # 원티드 백엔드 프리온보딩 7차 과제 - 카닥
   
-  <img height="500" width="500" src="https://user-images.githubusercontent.com/59385491/99067842-bb50a200-25ee-11eb-9252-4a4ae3644e8d.png">
+  <img height="500" width="500" src="https://user-images.githubusercontent.com/59385491/143792825-2c6c2f0b-684b-4498-ab91-f2492da067a3.png">
 
   <h2> 👨‍💻 원티드 프리온보딩 어나더글라스 팀 팀장 박상수입니다. </h2>
 
@@ -14,9 +14,14 @@
 
 <div align=center>
 
+### [프로젝트 회고](https://overcome-the-limits.tistory.com/entry/%ED%9A%8C%EA%B3%A0-%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%B0%B1%EC%97%94%EB%93%9C-%EC%BD%94%EC%8A%A4-7%EC%B0%A8-%EA%B3%BC%EC%A0%9C?category=980007)
+
+</br>
+
 <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" />
 <img alt="Hits" src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FAnother-Glass%2FAssignment1_Team1%2Fblob%2Fdevelop%2FREADME.md&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" />
 <img alt="issues" src="https://img.shields.io/github/issues/Another-Glass/Assignment1_Team1" />
+<img alt="sprint" src="https://img.shields.io/badge/wanted-sprint7-brown" />
 
 
 </div>
@@ -35,29 +40,6 @@
 -   일정 : 2021년 11월 22일(월) 오후 6시 ~ 11월 29일(월) 오후 2시
 
 <br>
-<br>
-
-<div align='center'>
-
-## 🧑🏻‍💻 팀원 소개
-
-| **팀장 박상수** | 
-|:-----:|
-|  <img src="https://avatars.githubusercontent.com/u/59385491?v=4" height=200 width=200> | 
-| **blog**: [Plus Ultra](https://overcome-the-limits.tistory.com/) </br> **github**: [epitone](https://github.com/epitoneproject)| 
-| ![sprint6](https://img.shields.io/badge/wanted-sprint6-brown) |
-| 변동요금 조건 연산  | 
-| [프로젝트 회고](https://overcome-the-limits.tistory.com/entry/%ED%9A%8C%EA%B3%A0-%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%B0%B1%EC%97%94%EB%93%9C-%EC%BD%94%EC%8A%A4-6%EC%B0%A8-%EA%B3%BC%EC%A0%9C) |
-
-<br>
-<br>
-
-
-</div>
-
-<br>
-<br>
-<br>
 
 ## 📕 과제 내용
 
@@ -66,8 +48,8 @@
 - README 작성
     - 프로젝트 빌드, 자세한 실행 방법 명시
     - 구현 방법과 이유에 대한 간략한 설명
+    - 서버 구조 및 디자인 패턴에 대한 개략적인 설명
     - 완료된 시스템이 배포된 서버의 주소
-    - Swagger나 Postman을 통한 API 테스트할때 필요한 상세 방법
     - 해당 과제를 진행하면서 회고 내용 블로그 포스팅
 - Swagger나 Postman을 이용하여 API 테스트 가능하도록 구현
 
@@ -77,176 +59,165 @@
 ### [개발 요구사항]
 
 **✔️ API 목록**
-- 요금계산 API
-
-
+- 사용자 생성 API
+- 사용자 로그인 API
+- 사용자가 소유한 타이어 정보를 저장하는 API
+- 사용자가 소유한 타이어 정보 조회 API
 
 <details><summary>[고려 사항 및 상세설명]</summary>
 
-### 주요 평가 사항
+</br>
 
-- 주어진 정보를 기술적으로 설계하고 구현할 수 있는 역량
-- 확장성을 고려한 시스템 설계 및 구현
-
-### 과제 안내
-
-디어는 사용자의 요금을 계산하기 위해 다양한 상황을 고려합니다. 
-
-- 할인 조건도 있습니다. 사용자가 파킹존에서 반납하는 경우 요금의 30%를 할인해주며, 사용자가 마지막 이용으로부터 30분 이내에 다시 이용하면 기본요금을 면제해줍니다.
-    - 우선 지역별로 다양한 요금제를 적용하고 있습니다. 예를 들어 건대에서 이용하는 유저는 기본요금 790원에 분당요금 150원, 여수에서 이용하는 유저는 기본요금 300원에 분당요금 70원으로 적용됩니다.
-- 벌금 조건도 있습니다. 사용자가 지역 바깥에 반납한 경우 얼마나 멀리 떨어져있는지 거리에 비례하는 벌금을 부과하며, 반납 금지로 지정된 구역에 반납하면 6,000원의 벌금을 요금에 추가로 부과합니다.
-- 예외도 있는데, 킥보드가 고장나서 정상적인 이용을 못하는 경우의 유저들을 배려하여 1분 이내의 이용에는 요금을 청구하지 않고 있습니다.
-
-최근에 다양한 할인과 벌금을 사용하여 지자체와 협력하는 경우가 점점 많아지고 있어 요금제에 새로운 할인/벌금 조건을 추가하는 일을 쉽게 만드려고 합니다. 어떻게 하면 앞으로 발생할 수 있는 다양한 할인과 벌금 조건을 기존의 요금제에 쉽게 추가할 수 있는 소프트웨어를 만들 수 있을까요? 
-
-우선은 사용자의 이용에 관한 정보를 알려주면 현재의 요금 정책에 따라 요금을 계산해주는 API를 만들어주세요. 그 다음은, 기능을 유지한 채로 새로운 할인이나 벌금 조건이 쉽게 추가될 수 있게 코드를 개선하여 최종 코드를 만들어주세요.
-
-**다음과 같은 정보들이 도움이 될 것 같아요.**
-
----
-
-- 요금제가 사용자 입장에서 합리적이고 이해가 쉬운 요금제라면 좋을 것 같아요.
-- 앞으로도 할인과 벌금 조건은 새로운 조건이 굉장히 많이 추가되거나 변경될 것 같아요.
-- 가장 최근의 할인/벌금 조건의 변경은 '특정 킥보드는 파킹존에 반납하면 무조건 무료' 였습니다.
+# 과제 안내
 
 
+## 1. 배경 및 공통 요구 사항
+
+<aside>
+
+😁 카닥에서 실제로 사용하는 프레임워크를 토대로 타이어 API를 설계 및 구현합니다.
+
+</aside>
+
+- 데이터베이스 환경은 별도로 제공하지 않습니다.
+ **RDB중 원하는 방식을 선택**하면 되며, sqlite3 같은 별도의 설치없이 이용 가능한 in-memory DB도 좋으며, 가능하다면 Docker로 준비하셔도 됩니다.
+- 단, 결과 제출 시 README.md 파일에 실행 방법을 완벽히 서술하여 DB를 포함하여 전체적인 서버를 구동하는데 문제없도록 해야합니다.
+- 데이터베이스 관련처리는 raw query가 아닌 **ORM을 이용하여 구현**합니다.
+- Response Codes API를 성공적으로 호출할 경우 200번 코드를 반환하고, 그 외의 경우에는 아래의 코드로 반환합니다.
+
+</br>
+
+## 2. 사용자 생성 API
+
+🎁 **요구사항**
+
+- ID/Password로 사용자를 생성하는 API.
+- 인증 토큰을 발급하고 이후의 API는 인증된 사용자만 호출할 수 있다.
+
+```jsx
+/* Request Body 예제 */
+
+ { "id": "candycandy", "password": "ASdfdsf3232@" }
+```
+
+</br>
+
+
+## 3. 사용자가 소유한 타이어 정보를 저장하는 API
+
+🎁 **요구사항**
+
+- 자동차 차종 ID(trimID)를 이용하여 사용자가 소유한 자동차 정보를 저장한다.
+- 한 번에 최대 5명까지의 사용자에 대한 요청을 받을 수 있도록 해야한다. 즉 사용자 정보와 trimId 5쌍을 요청데이터로 하여금 API를 호출할 수 있다는 의미이다.
+
+```jsx
+/* Request Body 예제 */
+[
+  {
+    "id": "candycandy",
+    "trimId": 5000
+  },
+  {
+    "id": "mylovewolkswagen",
+    "trimId": 9000
+  },
+  {
+    "id": "bmwwow",
+    "trimId": 11000
+  },
+  {
+    "id": "dreamcar",
+    "trimId": 15000
+  }
+]
+```
+
+</br>
+
+🔍 **상세구현 가이드**
+
+- 자동차 정보 조회 API의 사용은 아래와 같이 5000, 9000부분에 trimId를 넘겨서 조회할 수 있다.
+- 자동차 정보 조회 API 사용 예제 → 
+  - [https://dev.mycar.cardoc.co.kr/v1/trim/5000](https://dev.mycar.cardoc.co.kr/v1/trim/5000)
+  - [https://dev.mycar.cardoc.co.kr/v1/trim/9000](https://dev.mycar.cardoc.co.kr/v1/trim/9000) 
+  - [https://dev.mycar.cardoc.co.kr/v1/trim/11000](https://dev.mycar.cardoc.co.kr/v1/trim/11000) 
+  - [https://dev.mycar.cardoc.co.kr/v1/trim/15000](https://dev.mycar.cardoc.co.kr/v1/trim/15000)
+  
+</p>
+
+- 조회된 정보에서 타이어 정보는 spec → driving → frontTire/rearTire 에서 찾을 수 있다.
+- 타이어 정보는 205/75R18의 포맷이 정상이다. 205는 타이어 폭을 의미하고 75R은 편평비, 그리고 마지막 18은 휠사이즈로써 {폭}/{편평비}R{18}과 같은 구조이다.
+ 위와 같은 형식의 데이터일 경우만 DB에 항목별로 나누어 서로다른 Column에 저장하도록 한다.
+
+</br>
+
+
+## 4. 사용자가 소유한 타이어 정보 조회 API
+
+🎁 **요구사항**
+
+- 사용자 ID를 통해서 2번 API에서 저장한 타이어 정보를 조회할 수 있어야 한다.
 
 </div>
 </details>
+
 </br>
 </br>
+
+
+## 📕 과제 내용
+
+### [회원가입]
+- 이메일과 비밀번호, 이름을 입력받아 회원가입합니다.
+- 입력값 하나라도 제대로 입력되지 않으면 400 에러를 출력합니다.
+- 같은 이메일로 가입된 경우 409 에러를 출력합니다. 
+- 단방향 암호화 기술을 사용할 수 있는 bcrypt를 활용해서, 비밀번호를 암호화한 후 DB에 저장합니다. 
+
+</br>
+
+### [로그인]
+- 이메일, 비밀번호를 입력 받아서 로그인을 진행합니다. 
+- 입력값 하나라도 제대로 입력되지 않으면 400 에러를 출력합니다.
+- 비밀번호가 일치하지 않으면 401 에러를 출력합니다. 
+- 아이디, 비밀번호가 일치하는 경우 accessToken을 쿠키에 발급합니다.
+
+</br>
+
+### [타이어 정보 저장]
+- 이메일과 trimId를 입력 받아서 카닥 API에 파라미터 값으로 입력 받은 trimId를 넣고 호출합니다.
+- 카닥 API에서 받은 타이어 정보를 타이어 포맷 정규식을 활용해서 나눕니다.
+- 나뉘어진 타이어 정보를 데이터베이스에 저장합니다. 
+- 타이어 규격의 형식이 맞지 않는 경우 400 에러를 출력합니다. 
+- 타이어 규격 정보가 존재하지 않는 경우도 400 에러를 출력합니다. 
+- 입력값 객체가 5개를 초과하는 경우 400 에러를 출력합니다.
+- 입력값을 넣지 않는 경우 400 에러를 출력합니다. 
+
+</br>
+
+### [타이어 정보 조회]
+- 사용자의 아이디를 파라미터로 입력받습니다.
+- 사용자의 차량 타이어 정보가 조회됩니다. 
+
+</br>
+
+### [서버 구조 및 디자인 패턴] 
+- main.ts, splitTrim.libs.ts 파일의 경우 싱글톤 패턴을 적용시켰습니다. 인스턴스가 1개만 생성되는 특징을 가진 싱글턴 패턴을 활용해서 유지보수의 편리함을 올렸습니다. 
+- controller, service, repository, entity 계층을 구분해서 각 계층별로 객체간의 역할과 책임을 분리시켰습니다. 
+- 파이프를 활용해서 string 타입으로 들어오는 파리미터를 interger 타입으로 변경했습니다.
+- 필터를 활용해서 에러가 나는 경우 특정 형식에 맞게 출력되도록 설정했습니다. 
+- 인터셉터를 활용해서 요청에 성공 응답을 보내는 경우 특정 형식에 맞게 출력되도록 설정했습니다. 
+
+
+</br>
+</br>
+
 
 ## 📕 모델링
 
 </br>
 
-![디어ERD](https://user-images.githubusercontent.com/38933716/142597056-cf4c44f1-a923-46e4-be5c-88506f96fad2.png)
 
-</br>
-</br>
-
-## 📕 작업 효율 개선 방안
-
-- Node.js, express, Sequelize를 이용하여 요금계산 Api를 구현하였습니다.
-- 코드 컨벤션, 커밋 컨벤션, Git Flow를 지켜가며 작업했습니다.
-- Github Project, 마일스톤을 활용해서 백로그, 이슈 관리를 진행했습니다.
-- Service, Controller 등의 계층 분리를 통해 코드의 가독성을 높였습니다.
-- 리팩토링을 통해 가독성을 높이고, 유지보수를 편하게 하기 위해 노력 했습니다.
-
-
-</br>
-</br>
-
-## 💡 구현 기능
-
-### [ 요금계산 API ]
-
-- 결제요금을 계산해주는 라이브러리를 독립적으로 만들고, 이를 사용하여 최종요금을 조회하는 API를 구현했습니다.
-
-<br>
-
-### [ DB 조회 API, 공간정보 시각화 ]
-
-- 확인 시의 편의를 위해 DB 테이블마다 전체조회를 할 수 있는 API를 추가했습니다.
-- 또한 DB상의 공간정보를 시각화한 스프레드시트를 아래와 같이 제작했습니다.
-- [DB 공간정보 목록](https://docs.google.com/spreadsheets/d/1w8VWcGIeXK5w-PNMLeMdp_M20VEIdTnv0e335UgKhbo/edit#gid=0)
-- 아래는 테스트에 사용한 이용내역에 대한 설명입니다.
-  
-  <details><summary>[테스트 데이터 사용내역]</summary>
-  [id] - [지역(기본요금/시간요금)],[사용시간],[기타],[예상요금] 
-
-  1번 - 2번지역(400/80), 25분, 그외없음, expect 2400
-
-  2번 - 2번지역(400/80), 20분, 그외없음, expect 2000
-
-  4번 - 2번지역(400/80), 30초, 1분이내무료, expect 0
-
-  5번 - 2번지역(400/80), 10분, 6번 환승적용을 위한 용도, expect 1200
-
-  6번 - 2번지역(400/80), 35분, 30분이내환승용도, expect 2800
-
-  8번 - 2번지역(400/80), 10분, 9번 환승적용을 위한용도, expect 1200
-
-  9번 - 2번지역(400/80), 35분, 환승, 지역이탈(92005m),금지구역, expect 9209300
-
-  10번 - 4번지역(630/100), 10분, 지역이탈(97817m),주차구역, expect 9782841
-
-  11번 - 4번지역(630/100),15분,주차구역, expect 1491
-
-  </details>  
-
-<br>
-
-### [ 에러 핸들링 ]
-
-- 자바스크립트 자체 내장 Error 클래스를 상속 받아서, 커스텀 에러를 생성해서 관리했습니다.
-
-<br>
-<br>
-
-## 📕 확장성을 위한 고려 
-
-</br>
-
-- 과제분석을 통해 요금조건이 다양하고, 추가와 제거의 가능성이 많으며 조건의, 적용순서도 변경될 여지가 많다는 특징을 확인했습니다. 
-- 고민을 거쳐 해당 특징들에 적합한 책임연쇄패턴을 적용하기로 했습니다.
-  
-  <br>
-  
-  <img src="https://user-images.githubusercontent.com/38933716/142721613-771f811a-befb-4c40-a101-c6e687bcaf10.png" height=500>
-
-  *src/libs/costCalculator/ 폴더 내의 클래스 다이어그램*
-  
-
-1. CostChainBase는 Chain을 추상화한 인터페이스의 용도로 만들었습니다. 다만, 자바스크립트는 Duck Typing으로인해 인터페이스 개념이 존재하지 않으므로 어쩔 수 없이 클래스 상속을 이용했습니다.
-   
-2. ConcreteChain클래스들은 CostChainBase를 상속하여 구체화된 클래스들입니다. calculateCost 메소드를 통해 각자의 요금조건을 계산하고 goToNextChain을 통해 다음 체인으로 넘깁니다.
-   
-3. CostChainManager는 체인연결, 데이터 전처리 등 종합적으로 체인을 관리하는 클래스입니다. addChain으로 체인을 추가하고 최종적으로는 이 클래스의 calculateCost 메소드를 호출하여 요금을 계산합니다.
-   
-   <br>
-
-    <img src="https://user-images.githubusercontent.com/38933716/142758015-c35a3f29-0797-4b86-9721-7c82e6c9f655.png" height=450>
-   
-    *(인터페이스 용도) CostChainBase 실제 코드*
-
-    <br>
-    <img src="https://user-images.githubusercontent.com/38933716/142722006-968725a4-8439-4935-a1b3-11044168ac79.png" height=500>
-   
-    *CostChainManager 실제 코드*
-
-<br>
-
-- 추가적으로 다른 부분과의 의존성을 낮추기 위해, node.js의 index.js파일 모듈 기능을 이용해 독립적인 폴더로 구분하기로 했습니다.
-    <img src="https://user-images.githubusercontent.com/38933716/142722113-e5bd9325-3f10-47a5-938a-c681c8d70238.png" height=400>
-
-    */src/libs/costCalculator/index.js 파일의 내용*
-
-    <br>
-    
-    ```
-    const costCalculator = require('../libs/costChains');
-    let finalCost = await costCalculator.calculateCost(historyId);
-    ```
-    *실제 사용 예*
-
-<br>
-
-- 위와 같은 설계를 통해 요금조건의 추가, 삭제, 순서변경 등의 변화에 있어서 기존코드의 변경을 최소화 할 수 있었습니다.
-- SOLID원칙들 중 기능의 확장에는 열려있고 기존 코드의 변경에는 닫혀있는 Open-Closed 원칙을 만족할 수 있었습니다. SOLID의 일부 다른 원칙 또한 만족하는 것으로 보입니다.
-
-
-
-</br>
-</br>
-
-## ➕ 협업을 위한 노력
-
-- 구성원들의 전체 의견을 반영하여 API 명세와 DB모델을 구축 하였습니다.
-- 긴밀하게 소통하여, 신속하게 문제를 인식하고, 신속하게 해결 하기 위해 노력 하였습니다.
-- 전체 작업을 도메인 단위로 분리하여 구성원 간의 병목현상을 줄였습니다.
-- [과제에 사용한 노션 페이지](https://www.notion.so/pre-onboarding15/6-eacb8ed1521e4565909d455003d05a26)
-
+ <img height="700" width="900" src="https://user-images.githubusercontent.com/59385491/143793441-6806b117-4b54-4e56-abbd-5e4b21bd525e.png">
 
 
 <br>
@@ -255,20 +226,23 @@
 ## 🛠 실행 방법
 
 - 레포지토리를 clone 받거나, 압축을 해제한 후 npm install을 통해 환경 셋팅을 진행합니다.
-- npm start를 통해 서버를 구동합니다.
-- src 폴더에 .env 파일을 설정해서, 환경변수를 설정합니다.
-- npm start로 서버를 구동시키고, npm test를 입력하면 단위 테스트가 가능합니다.
-- [.env설정 노션 링크](https://www.notion.so/pre-onboarding15/df79485f22e64fdaa3011e5392797de6)
+- npm run start:dev를 통해 서버를 구동합니다.
+- 최상위 경로에 .env 파일을 설정해서, 환경변수를 설정합니다.
+- [.env설정 노션 링크](https://www.notion.so/epitone/dbfeafb35aa348fd87de6726226c5746)
   - <details><summary><b>링크 접속불가 시 .env 파일 설정 방법</b></summary>
 
     ```
-    RDS_DATABASE=DB 스키마 명
-    RDS_USERNAME=DB 유저 명
-    RDS_PASSWORD=DB 유저 비밀번호
-    RDS_HOSTNAME=DB 주소
-    RDS_PORT=DB 포트
-    PORT=http서버 포트
-    IS_SQLLITE=false
+    NODE_ENV=
+    PORT=
+    ADMIN_USER=
+    ADMIN_PASSWORD=
+    SECRET_KEY=
+    DB_HOST=
+    DB_PORT=
+    DB_NAME=
+    DB_USERNAME=
+    DB_PASSWORD=
+    JWT_SECRET_KEY=
     ```
 
 
@@ -281,14 +255,11 @@
 
 ## 🗂 과제 확인 및 평가 API 명세서
 
-- Postman을 활용하여 API 작동 테스트를 진행했습니다. 
+- Swagger를 활용하여 API 작동 테스트를 진행했습니다. 
 - __배포된 서버 주소__ 및 자세한 API 명세는 아래에서 확인 가능합니다.
-- [🗂 API Description Link](https://documenter.getpostman.com/view/18068137/UVJWpzT4)
-- [![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/18068137/UVJWpzT4) 을 클릭하여 웹브라우저 혹은 Postman 클라이언트에 콜렉션이 로드되면
-   1. Variables 탭에서 서버 Host와 Port를 지정합니다. (기본값이 지정되어 있습니다.)
-   2. 그후 우측 상단의 Run 버튼을 눌러 RUN ORDER 화면에 진입한 뒤 Run \[Collection Name\]을 클릭하면, 이상적인 상황에서의 테스트가 진행됩니다.
-       
-   3. 요청마다 여러 이상적이지 않은 상황의 테스트에 대한 예시가 있습니다.</br>
+- [🗂 API Description Link](http://3.36.217.156:3000/docs/)      
+   1. 요청마다 여러 이상적이지 않은 상황의 테스트에 대한 예시가 있습니다.</br>
+   2. Swagger에 접근하려면 환경변수의 ADMIN_USER, ADMIN_PASSWORD를 입력해야 합니다.
  
 </br>
 </br>
@@ -310,18 +281,6 @@
 </br>
 
 
-## 🛠 Dependencies
-
-</br>
-
-<div align=center>
-<img src="https://user-images.githubusercontent.com/38933716/142599090-85aa54f9-dd94-4183-ac2f-43151eac07b6.png" height=850>
-</div>
-
-
-</br>
-</br>
-
 
 ## 🌲 File Tree
 
@@ -330,81 +289,89 @@
 
 ```
 📦src
- ┣ 📂bin
- ┃ ┗ 📜www.js
+ ┣ 📂common
+ ┃ ┣ 📂exceptions
+ ┃ ┃ ┗ 📜http-exception.filter.ts
+ ┃ ┣ 📂interceptors
+ ┃ ┃ ┗ 📜success.interceptor.ts
+ ┃ ┣ 📂jobs
+ ┃ ┃ ┗ 📜mycar.jobs.ts
+ ┃ ┣ 📂libs
+ ┃ ┃ ┣ 📜checkArray.libs.ts
+ ┃ ┃ ┗ 📜splitTrim.libs.ts
+ ┃ ┗ 📂middlewares
+ ┃ ┃ ┣ 📜logger.middleware.spec.ts
+ ┃ ┃ ┗ 📜logger.middleware.ts
  ┣ 📂configs
- ┃ ┣ 📜cost.js
- ┃ ┣ 📜db.js
- ┃ ┗ 📜index.js
- ┣ 📂controllers
- ┃ ┣ 📜historyController.js
- ┃ ┗ 📜listingController.js
- ┣ 📂globals
- ┃ ┣ 📜index.js
- ┃ ┣ 📜responseMessage.js
- ┃ ┣ 📜routes.js
- ┃ ┗ 📜statusCode.js
- ┣ 📂libs
- ┃ ┗ 📂costCalculator
- ┃ ┃ ┣ 📂chains
- ┃ ┃ ┃ ┣ 📜DefaultCostChain.js
- ┃ ┃ ┃ ┣ 📜ForbiddenAreaFineChain.js
- ┃ ┃ ┃ ┣ 📜index.js
- ┃ ┃ ┃ ┣ 📜MalfunctionFreeChain.js
- ┃ ┃ ┃ ┣ 📜OutOfAreaFineChain.js
- ┃ ┃ ┃ ┣ 📜ParkingDiscountChain.js
- ┃ ┃ ┃ ┗ 📜TransportChain.js
- ┃ ┃ ┣ 📜CostChainBase.js
- ┃ ┃ ┣ 📜CostChainManager.js
- ┃ ┃ ┗ 📜index.js
- ┣ 📂middlewares
- ┣ 📂models
- ┃ ┣ 📜area.js
- ┃ ┣ 📜deer.js
- ┃ ┣ 📜forbiddenArea.js
- ┃ ┣ 📜history.js
- ┃ ┣ 📜index.js
- ┃ ┣ 📜parkingZone.js
- ┃ ┗ 📜user.js
- ┣ 📂routes
- ┃ ┣ 📜globalRouter.js
- ┃ ┣ 📜historyRouter.js
- ┃ ┗ 📜index.js
- ┣ 📂services
- ┃ ┣ 📜areaService.js
- ┃ ┣ 📜deerService.js
- ┃ ┣ 📜historyService.js
- ┃ ┗ 📜listingService.js
+ ┃ ┗ 📜typeorm.config.ts
+ ┣ 📂tires
+ ┃ ┣ 📂dto
+ ┃ ┃ ┣ 📂swagger
+ ┃ ┃ ┃ ┗ 📂success
+ ┃ ┃ ┃ ┃ ┗ 📜getTire.success.dto.ts
+ ┃ ┃ ┣ 📜getTire.dto.ts
+ ┃ ┃ ┗ 📜tireInfo.dto.ts
+ ┃ ┣ 📜tires.controller.spec.ts
+ ┃ ┣ 📜tires.controller.ts
+ ┃ ┣ 📜tires.entity.ts
+ ┃ ┣ 📜tires.module.ts
+ ┃ ┣ 📜tires.repository.ts
+ ┃ ┣ 📜tires.service.spec.ts
+ ┃ ┗ 📜tires.service.ts
+ ┣ 📂trims
+ ┃ ┣ 📂constants
+ ┃ ┃ ┗ 📜trim.constants.ts
+ ┃ ┣ 📂dto
+ ┃ ┃ ┣ 📂swagger
+ ┃ ┃ ┃ ┣ 📂fail
+ ┃ ┃ ┃ ┃ ┗ 📜createTrim.fail.dto.ts
+ ┃ ┃ ┃ ┗ 📂success
+ ┃ ┃ ┃ ┃ ┗ 📜createTrim.success.dto.ts
+ ┃ ┃ ┣ 📜createTrim.request.dto.ts
+ ┃ ┃ ┗ 📜trimInfo.dto.ts
+ ┃ ┣ 📜trims.controller.spec.ts
+ ┃ ┣ 📜trims.controller.ts
+ ┃ ┣ 📜trims.entity.ts
+ ┃ ┣ 📜trims.module.ts
+ ┃ ┣ 📜trims.repository.ts
+ ┃ ┣ 📜trims.service.spec.ts
+ ┃ ┗ 📜trims.service.ts
+ ┣ 📂users
+ ┃ ┣ 📂dto
+ ┃ ┃ ┣ 📂swagger
+ ┃ ┃ ┃ ┣ 📂fail
+ ┃ ┃ ┃ ┃ ┣ 📜signin.fail.dto.ts
+ ┃ ┃ ┃ ┃ ┗ 📜signup.fail.dto.ts
+ ┃ ┃ ┃ ┗ 📂success
+ ┃ ┃ ┃ ┃ ┣ 📜signin.success.dto.ts
+ ┃ ┃ ┃ ┃ ┗ 📜signup.success.dto.ts
+ ┃ ┃ ┣ 📜signin.request.dto.ts
+ ┃ ┃ ┗ 📜signup.request.dto.ts
+ ┃ ┣ 📂jwt
+ ┃ ┃ ┣ 📜jwt.payload.ts
+ ┃ ┃ ┗ 📜jwt.strategy.ts
+ ┃ ┣ 📜users.controller.spec.ts
+ ┃ ┣ 📜users.controller.ts
+ ┃ ┣ 📜users.entity.ts
+ ┃ ┣ 📜users.module.ts
+ ┃ ┣ 📜users.repository.ts
+ ┃ ┣ 📜users.service.spec.ts
+ ┃ ┗ 📜users.service.ts
+ ┣ 📜app.module.ts
+ ┗ 📜main.ts
  ┣ 📂test
- ┃ ┣ 📂data
- ┃ ┃ ┗ 📂dto
- ┃ ┃ ┃ ┣ 📜postAccount.json
- ┃ ┃ ┃ ┣ 📜signup.json
- ┃ ┃ ┃ ┗ 📜token.json
- ┃ ┗ 📂unit
- ┃ ┃ ┗ 📂controllers
- ┃ ┃ ┃ ┣ 📂accountController
- ┃ ┃ ┃ ┃ ┗ 📜postAccount.test.js
- ┃ ┃ ┃ ┣ 📂transactionController
- ┃ ┃ ┃ ┃ ┣ 📜getTransaction.test.js
- ┃ ┃ ┃ ┃ ┗ 📜postTransaction.test.js
- ┃ ┃ ┃ ┗ 📂userController
- ┃ ┃ ┃ ┃ ┣ 📜postToken.test.js
- ┃ ┃ ┃ ┃ ┗ 📜postUser.test.js
- ┣ 📂utils
- ┃ ┣ 📂errors
- ┃ ┃ ┣ 📜commonError.js
- ┃ ┃ ┗ 📜errors.js
- ┃ ┣ 📜index.js
- ┃ ┣ 📜logger.js
- ┃ ┣ 📜resFormatter.js
- ┃ ┗ 📜time.js
+ ┃ ┣ 📜app.e2e-spec.ts
+ ┃ ┗ 📜jest-e2e.json
  ┣ 📜.env
- ┣ 📜.eslintrc.json
+ ┣ 📜.eslintrc.js
  ┣ 📜.gitignore
- ┣ 📜.prettierrc.json
- ┣ 📜app.js
+ ┣ 📜.prettierrc
+ ┣ 📜README.md
+ ┣ 📜compose.yml
+ ┣ 📜nest-cli.json
  ┣ 📜package-lock.json
- ┗ 📜package.json
+ ┣ 📜package.json
+ ┣ 📜tsconfig.build.json
+ ┗ 📜tsconfig.json
 
 ```
